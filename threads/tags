@@ -1,0 +1,45 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Acquire	/Users/Trevor/Desktop/nachos/threads/synch.cc	/^void Lock::Acquire() {}$/;"	f	language:C++	class:Lock
+Acquire	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    void Acquire(); \/\/ these are the only operations on a lock$/;"	p	language:C++	class:Lock
+Broadcast	/Users/Trevor/Desktop/nachos/threads/synch.cc	/^void Condition::Broadcast(Lock* conditionLock) { }$/;"	f	language:C++	class:Condition
+Broadcast	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    void Broadcast(Lock *conditionLock);\/\/ the currentThread for all of $/;"	p	language:C++	class:Condition
+Condition	/Users/Trevor/Desktop/nachos/threads/synch.cc	/^Condition::Condition(char* debugName) { }$/;"	f	language:C++	class:Condition
+Condition	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    Condition(char* debugName);		\/\/ initialize condition to $/;"	p	language:C++	class:Condition
+Condition	/Users/Trevor/Desktop/nachos/threads/synch.h	/^class Condition {$/;"	c	language:C++
+getName	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    char* getName() { return (name); }$/;"	f	language:C++	class:Condition
+getName	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    char* getName() { return name; }	\/\/ debugging assist$/;"	f	language:C++	class:Lock
+getName	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    char* getName() { return name;}			\/\/ debugging assist$/;"	f	language:C++	class:Semaphore
+isHeldByCurrentThread	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    bool isHeldByCurrentThread();	\/\/ true if the current thread$/;"	p	language:C++	class:Lock
+Lock	/Users/Trevor/Desktop/nachos/threads/synch.cc	/^Lock::Lock(char* debugName) {}$/;"	f	language:C++	class:Lock
+Lock	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    Lock(char* debugName);  		\/\/ initialize lock to be FREE$/;"	p	language:C++	class:Lock
+Lock	/Users/Trevor/Desktop/nachos/threads/synch.h	/^class Lock {$/;"	c	language:C++
+name	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    char* name;				\/\/ for debugging$/;"	m	language:C++	class:Lock
+name	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    char* name;        \/\/ useful for debugging$/;"	m	language:C++	class:Semaphore
+name	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    char* name;$/;"	m	language:C++	class:Condition
+P	/Users/Trevor/Desktop/nachos/threads/synch.cc	/^Semaphore::P()$/;"	f	language:C++	class:Semaphore
+P	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    void P();	 \/\/ these are the only operations on a semaphore$/;"	p	language:C++	class:Semaphore
+queue	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    List *queue;       \/\/ threads waiting in P() for the value to be > 0$/;"	m	language:C++	class:Semaphore
+Release	/Users/Trevor/Desktop/nachos/threads/synch.cc	/^void Lock::Release() {}$/;"	f	language:C++	class:Lock
+Release	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    void Release(); \/\/ they are both *atomic*$/;"	p	language:C++	class:Lock
+Semaphore	/Users/Trevor/Desktop/nachos/threads/synch.cc	/^Semaphore::Semaphore(char* debugName, int initialValue)$/;"	f	language:C++	class:Semaphore
+Semaphore	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    Semaphore(char* debugName, int initialValue);	\/\/ set initial value$/;"	p	language:C++	class:Semaphore
+Semaphore	/Users/Trevor/Desktop/nachos/threads/synch.h	/^class Semaphore {$/;"	c	language:C++
+Signal	/Users/Trevor/Desktop/nachos/threads/synch.cc	/^void Condition::Signal(Lock* conditionLock) { }$/;"	f	language:C++	class:Condition
+Signal	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    void Signal(Lock *conditionLock);   \/\/ conditionLock must be held by$/;"	p	language:C++	class:Condition
+SYNCH_H	/Users/Trevor/Desktop/nachos/threads/synch.h	/^#define SYNCH_H$/;"	d	language:C++
+V	/Users/Trevor/Desktop/nachos/threads/synch.cc	/^Semaphore::V()$/;"	f	language:C++	class:Semaphore
+V	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    void V();	 \/\/ they are both *atomic*$/;"	p	language:C++	class:Semaphore
+value	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    int value;         \/\/ semaphore value, always >= 0$/;"	m	language:C++	class:Semaphore
+Wait	/Users/Trevor/Desktop/nachos/threads/synch.cc	/^void Condition::Wait(Lock* conditionLock) { ASSERT(FALSE); }$/;"	f	language:C++	class:Condition
+Wait	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    void Wait(Lock *conditionLock); 	\/\/ these are the 3 operations on $/;"	p	language:C++	class:Condition
+~Condition	/Users/Trevor/Desktop/nachos/threads/synch.cc	/^Condition::~Condition() { }$/;"	f	language:C++	class:Condition
+~Condition	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    ~Condition();			\/\/ deallocate the condition$/;"	p	language:C++	class:Condition
+~Lock	/Users/Trevor/Desktop/nachos/threads/synch.cc	/^Lock::~Lock() {}$/;"	f	language:C++	class:Lock
+~Lock	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    ~Lock();				\/\/ deallocate lock$/;"	p	language:C++	class:Lock
+~Semaphore	/Users/Trevor/Desktop/nachos/threads/synch.cc	/^Semaphore::~Semaphore()$/;"	f	language:C++	class:Semaphore
+~Semaphore	/Users/Trevor/Desktop/nachos/threads/synch.h	/^    ~Semaphore();   					\/\/ de-allocate semaphore$/;"	p	language:C++	class:Semaphore
