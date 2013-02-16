@@ -79,7 +79,9 @@ class Lock {
 
   private:
     char* name;				// for debugging
+#ifdef CHANGED
     Semaphore* sem;
+#endif
     // plus some other stuff you'll need to define
 };
 

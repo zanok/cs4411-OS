@@ -84,9 +84,7 @@ Semaphore::P()
 //	are disabled when it is called.
 //----------------------------------------------------------------------
 
-	void
-Semaphore::V()
-{
+void Semaphore::V() {
 	Thread *thread;
 	IntStatus oldLevel = interrupt->SetLevel(IntOff);
 
@@ -101,31 +99,51 @@ Semaphore::V()
 // Note -- without a correct implementation of Condition::Wait(), 
 // the test case in the network assignment won't work!
 Lock::Lock(char* debugName) {
-	//XXX Start
+#ifdef CHANGED
 	sem = new Semaphore(debugName,1);
-	//XXX Finish
+#endif
 }
-
 
 Lock::~Lock() {
-	//XXX Start
+#ifdef CHANGED
 	delete sem;
-	//XXX Finish
+#endif
 }
+
 void Lock::Acquire() {
-	//XXX Start
+#ifdef CHANGED
 	sem->P();
-	//XXX Finish
+#endif
 }
 
 void Lock::Release() {
-	//XXX Start
+#ifdef CHANGED
 	sem->V();
-	//XXX Finish
+#endif
 }
 
-Condition::Condition(char* debugName) { }
-Condition::~Condition() { }
-void Condition::Wait(Lock* conditionLock) { ASSERT(FALSE); }
-void Condition::Signal(Lock* conditionLock) { }
-void Condition::Broadcast(Lock* conditionLock) { }
+Condition::Condition(char* debugName) { 
+#ifdef CHANGED
+#endif
+}
+
+Condition::~Condition() {
+#ifdef CHANGED
+#endif
+}
+
+void Condition::Wait(Lock* conditionLock) { 
+#ifdef CHANGED
+#endif
+	ASSERT(FALSE); }
+
+void Condition::Signal(Lock* conditionLock) {
+#ifdef CHANGED
+#endif
+}
+
+void Condition::Broadcast(Lock* conditionLock) { 
+#ifdef CHANGED
+#endif
+}
+
