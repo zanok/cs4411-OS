@@ -33,8 +33,7 @@
 //	"initialValue" is the initial value of the semaphore.
 //----------------------------------------------------------------------
 
-Semaphore::Semaphore(char* debugName, int initialValue)
-{
+Semaphore::Semaphore(char* debugName, int initialValue) {
 	name = debugName;
 	value = initialValue;
 	queue = new List;
@@ -46,8 +45,7 @@ Semaphore::Semaphore(char* debugName, int initialValue)
 //	is still waiting on the semaphore!
 //----------------------------------------------------------------------
 
-Semaphore::~Semaphore()
-{
+Semaphore::~Semaphore() {
 	delete queue;
 }
 
@@ -61,9 +59,7 @@ Semaphore::~Semaphore()
 //	when it is called.
 //----------------------------------------------------------------------
 
-	void
-Semaphore::P()
-{
+void Semaphore::P() {
 	IntStatus oldLevel = interrupt->SetLevel(IntOff);	// disable interrupts
 
 	while (value == 0) { 			// semaphore not available
@@ -82,8 +78,7 @@ Semaphore::P()
 //	As with P(), this operation must be atomic, so we need to disable
 //	interrupts.  Scheduler::ReadyToRun() assumes that threads
 //	are disabled when it is called.
-//----------------------------------------------------------------------
-
+//---------------------------------------------------------------------- 
 void Semaphore::V() {
 	Thread *thread;
 	IntStatus oldLevel = interrupt->SetLevel(IntOff);
@@ -100,6 +95,7 @@ void Semaphore::V() {
 // the test case in the network assignment won't work!
 Lock::Lock(char* debugName) {
 #ifdef CHANGED
+	name = debugName;
 	sem = new Semaphore(debugName,1);
 #endif
 }
@@ -124,26 +120,63 @@ void Lock::Release() {
 
 Condition::Condition(char* debugName) { 
 #ifdef CHANGED
+	name = debugName;
+	queue = new List;
 #endif
 }
 
 Condition::~Condition() {
 #ifdef CHANGED
+	delete queue;
 #endif
 }
 
 void Condition::Wait(Lock* conditionLock) { 
 #ifdef CHANGED
+	//release the lock
+	conditionLock->Release();
+
+	//relinquish the CPU until signaled
+	//TODO: relinquish the CPU until signaled
+	//queue->Append((void *)currentThread);	// so go to sleep
+	//currentThread->Sleep();
+
+	//re-aquire lock
+	conditionLock->Acquire();
 #endif
-	ASSERT(FALSE); }
+	ASSERT(FALSE);
+}
 
 void Condition::Signal(Lock* conditionLock) {
 #ifdef CHANGED
+	//TODO: Finish This?
+	Thread *thread;
+	IntStatus oldLevel = interrupt->SetLevel(IntOff);
+
+	thread = (Thread *)queue->Remove();
+
+	if (thread != NULL)
+		scheduler->ReadyToRun(thread);
+
+	interrupt->SetLevel(oldLevel);
 #endif
 }
 
 void Condition::Broadcast(Lock* conditionLock) { 
 #ifdef CHANGED
-#endif
-}
+	Thread *thread;
+	IntStatus oldLevel = interrupt->SetLevel(IntOff);
 
+	while(1){
+		thread = (Thread *)queue->Remove();
+
+		if (thread != NULL)
+			scheduler->ReadyToRun(thread);
+		else
+			break; 
+	}
+
+	interrupt->SetLevel(oldLevel);
+	//TODO: Finish This?
+#endif
+} 

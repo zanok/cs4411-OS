@@ -79,8 +79,8 @@ class Lock {
 
   private:
     char* name;				// for debugging
-#ifdef CHANGED
-    Semaphore* sem;
+#ifdef changed
+    semaphore* sem;
 #endif
     // plus some other stuff you'll need to define
 };
@@ -134,6 +134,8 @@ class Condition {
 
   private:
     char* name;
-    // plus some other stuff you'll need to define
+#ifdef changed
+    List *queue;
+#endif
 };
 #endif // SYNCH_H
