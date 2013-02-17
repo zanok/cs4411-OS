@@ -27,8 +27,7 @@
 // 	Initialize the list of ready but not running threads to empty.
 //----------------------------------------------------------------------
 
-Scheduler::Scheduler()
-{ 
+Scheduler::Scheduler() { 
     readyList = new List; 
 } 
 
@@ -37,8 +36,7 @@ Scheduler::Scheduler()
 // 	De-allocate the list of ready threads.
 //----------------------------------------------------------------------
 
-Scheduler::~Scheduler()
-{ 
+Scheduler::~Scheduler() { 
     delete readyList; 
 } 
 
@@ -50,9 +48,7 @@ Scheduler::~Scheduler()
 //	"thread" is the thread to be put on the ready list.
 //----------------------------------------------------------------------
 
-void
-Scheduler::ReadyToRun (Thread *thread)
-{
+void Scheduler::ReadyToRun (Thread *thread) {
     DEBUG('t', "Putting thread %s on ready list.\n", thread->getName());
 
     thread->setStatus(READY);
@@ -67,9 +63,11 @@ Scheduler::ReadyToRun (Thread *thread)
 //	Thread is removed from the ready list.
 //----------------------------------------------------------------------
 
-Thread *
-Scheduler::FindNextToRun ()
-{
+Thread * Scheduler::FindNextToRun () {
+#ifdef CHANGED
+//iterate through and find the highest priority and run it
+
+#endif
     return (Thread *)readyList->Remove();
 }
 
@@ -87,9 +85,7 @@ Scheduler::FindNextToRun ()
 //	"nextThread" is the thread to be put into the CPU.
 //----------------------------------------------------------------------
 
-void
-Scheduler::Run (Thread *nextThread)
-{
+void Scheduler::Run (Thread *nextThread) {
     Thread *oldThread = currentThread;
     
 #ifdef USER_PROGRAM			// ignore until running user programs 
@@ -139,9 +135,7 @@ Scheduler::Run (Thread *nextThread)
 // 	Print the scheduler state -- in other words, the contents of
 //	the ready list.  For debugging.
 //----------------------------------------------------------------------
-void
-Scheduler::Print()
-{
+void Scheduler::Print() {
     printf("Ready list contents:\n");
     readyList->Mapcar((VoidFunctionPtr) ThreadPrint);
 }
